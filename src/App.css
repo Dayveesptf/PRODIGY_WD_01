@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@media (max-width: 767px) {
+  .slide-top1 {
+     background: url("./assets/Illustration.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
+     overflow: hidden;
+     position: relative;
+    }
+    .slider {
+      background: url("./assets/unseen-img.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      overflow: hidden;
+      position: relative;
+     }
+     .slider2 {
+      background: url("./assets/pana.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+     }
+     .slider3 {
+      background-color: rgb(238, 255, 238);
+      overflow: hidden;
+      position: relative;
+     }
+    .slide-top1 button {
+      margin-bottom: -25%;
+    }
+    .slider button {
+      margin-bottom: -25%;
+    }
+    .slider2 button, .slider3 button{
+      margin-bottom: -25%;
+    }
+    .slide-top1::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90vh;
+      background-color: rgba(0, 0, 0, 0.771); /* Adjust opacity for brightness */
+      z-index: 20; /* Place it behind the content */
+    }
+    .slider2::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90vh;
+      background-color: rgba(0, 0, 0, 0.771); /* Adjust opacity for brightness */
+      z-index: 20; /* Place it behind the content */
+    }
+    .slider3::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90vh;
+      background-color: rgba(0, 0, 0, 0); /* Adjust opacity for brightness */
+      z-index: 20; /* Place it behind the content */
+    }
+    .slider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90vh;
+      background-color: rgba(0, 0, 0, 0.771); /* Adjust opacity for brightness */
+      z-index: 20; /* Place it behind the content */
+    }
+    .slide-top1 > * {
+      position: relative;
+      z-index: 20; /* Ensure contents are above the overlay */
+    }
+    .slider2 > *, .slider3 > * {
+      position: relative;
+      z-index: 20; /* Ensure contents are above the overlay */
+    }
+    .slider > * {
+      position: relative;
+      z-index: 20; /* Ensure contents are above the overlay */
+    }
+    .edit-text, .edit-text2, .edit-text3 {
+      color: white;
+    }
+}
