@@ -2,7 +2,7 @@
 
 @media (max-width: 767px) {
   .slide-top1 {
-     background: url("./assets/Illustration.png");
+     background: url("./assets/illustration.png");
      background-position: center;
      background-repeat: no-repeat;
      background-size: contain;
