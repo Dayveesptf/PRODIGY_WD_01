@@ -96,9 +96,9 @@ function App() {
           <img className='w-full h-full' src={img11} alt="" />
         </div>
         <div className='md:w-[50%] md:text-left md:ml-[5%] mx-auto text-center'>
-          <h1 className='edit-text2 text-[25px] w-[90%] mx-auto md:w-full md:mx-0 md:text-3xl lg:text-4xl font-semibold'>The unseen of spending three <br />years at Pixelgrade</h1>
+          <h1 className='edit-text2 text-[25px] w-[90%] mx-auto md:w-full md:mx-0 md:text-3xl lg:text-4xl font-semibold'>The unseen of spending 3 <br />years at Pixelgrade</h1>
           <p className='w-[80%] mx-auto md:w-full md:mx-0 md:mt-10 mt-6 text-gray-400 text-lg md:text-lg'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo ipsum. Sed accumsan quam vitae est varius fringilla. Pellentesque placerat vestibulum lorem sed porta. Nullam mattis tristique iaculis. Nullam pulvinar sit amet risus pretium auctor. Etiam quis massa pulvinar, aliquam quam vitae, tempus sem. Donec elementum pulvinar odio.</p>
-          <button className="bg-green-500 md:mt-12 mt-8 px-4 py-2 font-medium rounded hover:bg-green-300 hover:text-green-900 text-white transition-all duration-200 ease-in text-lg md:text-xl">Learn More</button>
+          <button className="unseen-btn bg-green-500 md:mt-12 mt-8 px-4 py-2 font-medium rounded hover:bg-green-300 hover:text-green-900 text-white transition-all duration-200 ease-in text-lg md:text-xl">Learn More</button>
         </div>
       </div>
       <div className='block py-16 md:py-28 bg-green-50 md:flex'>

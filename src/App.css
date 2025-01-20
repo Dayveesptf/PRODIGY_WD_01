@@ -29,12 +29,13 @@
       background-color: rgb(238, 255, 238);
       overflow: hidden;
       position: relative;
+      height: 80vh;
      }
     .slide-top1 button {
       margin-bottom: -25%;
     }
     .slider button {
-      margin-bottom: -25%;
+      margin-bottom: 10%;
     }
     .slider2 button, .slider3 button{
       margin-bottom: -25%;
@@ -91,7 +92,16 @@
       position: relative;
       z-index: 20; /* Ensure contents are above the overlay */
     }
-    .edit-text, .edit-text2, .edit-text3 {
+    .edit-text, .edit-text3 {
       color: white;
+    }
+    .edit-text2 {
+      color: white;
+      margin-top: 10%;
+    }
+    @media (max-width: 400px) {
+      .slider p {
+        font-size: 14px;
+      }
     }
 }
