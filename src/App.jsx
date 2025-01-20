@@ -1,7 +1,7 @@
 import './App.css'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
-import HeroImage from './assets/illustration.png'
+import HeroImage from './assets/monitor.png'
 import img1 from './assets/Logo (1).png'
 import img2 from './assets/Logo (2).png'
 import img3 from './assets/Logo (3).png'
