@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+
+.sections {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(100px); /* Start position */
+}
+
+.sections.visible {
+  animation: slideUp 0.7s ease forwards; /* Trigger animation */
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 767px) {
   .slide-top1 {
      background: url("./assets/monitor.png");

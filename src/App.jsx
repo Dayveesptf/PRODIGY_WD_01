@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react'
+
 import './App.css'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
@@ -22,10 +24,42 @@ import img17 from './assets/tesla-thingy.png'
 
 function App() {
 
+  const sectionsRef = useRef([]); // Store references to all the sections
+
+    // Add references dynamically
+    const addToRefs = el => {
+      if (el && !sectionsRef.current.includes(el)) {
+        sectionsRef.current.push(el); // Avoid duplicate refs
+      }
+    };
+  
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.4, // Trigger when 20% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible"); // Add class
+          observer.unobserve(entry.target); // Stop observing
+        }
+      });
+    }, observerOptions);
+
+    // Observe each section
+    sectionsRef.current.forEach(section => observer.observe(section));
+
+    // Cleanup observer on component unmount
+    return () => observer.disconnect();
+  }, []);
+  
+  
+
   return (
     <>
       <Navbar />
-      <div className='slide-top1 flex md:w-[100%] md:px-[5%] md:bg-green-50 mt-20 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20'>
+      <div className='slide-top1 sections flex md:w-[100%] md:px-[5%] md:bg-green-50 mt-20 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20' ref={el => sectionsRef.current[0] = el}>
         <div className='md:w-[50%] md:text-left md:ml-[5%] mx-auto text-center'>
           <h1 className='edit-text text-[25px] w-[90%] mx-auto md:w-full md:mx-0 md:text-4xl lg:text-5xl font-semibold'>Lessons and insights <br /><span className='text-green-500'> from 8 years</span></h1>
           <p className='w-[80%] mx-auto md:w-full md:mx-0 md:mt-10 mt-6 text-gray-400 text-lg md:text-xl'>Where to grow your business as a photographer. site or social media?</p>
@@ -35,7 +69,8 @@ function App() {
           <img className='w-full h-5/6' src={HeroImage} alt="" />
         </div>
       </div>
-      <div className='mt-2 md:mt-0 flex flex-col items-center py-24 z-1'>
+
+      <div className='mt-2 sections md:mt-0 flex flex-col items-center py-24 z-1' ref={addToRefs}>
         <h1 className='text-[25px] md:text-4xl lg:text-5xl font-semibold text-gray-800'>Our Clients</h1>
         <p className='mt-10 text-xl w-5/6 text-center text-gray-400'>We have been working with some Fortune 500+ clients</p>
         <div className='flex mt-12 gap-2 md:gap-6 lg:gap-8'>
@@ -62,27 +97,30 @@ function App() {
           </div>
         </div>
       </div>
+
       <hr className='h-1 mb-12 bg-green-200 w-2/6 mx-auto'/>
-      <div className='py-4 items-center'>
+
+      <div className='py-4 sections items-center' ref={addToRefs}>
         <h1 className='w-4/6 text-center text-[25px] md:text-2xl lg:text-3xl font-semibold mx-auto'>Manage your community in a single system</h1>
         <p className='w-[80%] mx-auto text-center mt-6 text-gray-400 text-xl md:mt-10 lg:mt-10'>Who is DVLP suitable for?</p>
       </div>
-      <div className='py-6 grid grid-cols-1 md:grid-cols-3 gap-12 w-full md:w-[96%] md:ml-[2%]'>
-        <div className='block items-center w-4/6 md:w-full mx-auto py-6 md:py-10 hover:bg-green-200 shadow-lg shadow-gray-800 rounded-lg'>
+
+      <div className='py-6 sections grid grid-cols-1 md:grid-cols-3 gap-12 w-full md:w-[96%] md:ml-[2%]' ref={addToRefs}>
+        <div className='block sections items-center w-4/6 md:w-full mx-auto py-6 md:py-10 hover:bg-green-200 shadow-lg shadow-gray-800 rounded-lg' ref={addToRefs}>
           <div className='w-[20%] h-[20%] ml-[43%]'>
             <img src={img8} alt="" />
           </div>
             <h1 className='mt-8 text-center w-[100%] md:w-[4/6] text-lg font-semibold md:text-xl lg:text-2xl'>Membership <br /> Organisations</h1>
             <p className='text-gray-500 text-[12px] text-center mt-4 md:text-md lg:text-lg md:mt-6 w-[70%] mx-auto'>Our membership management software provides full automation of membership renewals and</p>
         </div>
-        <div className='block items-center w-4/6 md:w-full mx-auto py-6 md:py-10 hover:bg-green-200 shadow-lg shadow-gray-800 rounded-lg'>
+        <div className='block sections items-center w-4/6 md:w-full mx-auto py-6 md:py-10 hover:bg-green-200 shadow-lg shadow-gray-800 rounded-lg' ref={addToRefs}>
           <div className='w-[20%] h-[20%] ml-[43%]'>
             <img src={img9} alt="" />
           </div>
             <h1 className='mt-8 text-center w-[100%] md:w-[4/6] text-lg font-semibold md:text-xl lg:text-2xl'>National <br /> Associations</h1>
             <p className='text-gray-500 text-[12px] text-center mt-4 md:text-md lg:text-lg md:mt-6 w-[70%] mx-auto'>Our membership management software provides full automation of membership renewals and</p>
         </div>
-        <div className='block items-center w-4/6 md:w-full mx-auto py-6 md:py-10 hover:bg-green-200 shadow-lg shadow-gray-800 rounded-lg'>
+        <div className='block sections items-center w-4/6 md:w-full mx-auto py-6 md:py-10 hover:bg-green-200 shadow-lg shadow-gray-800 rounded-lg' ref={addToRefs}>
           <div className='w-[20%] h-[20%] ml-[43%]'>
             <img src={img10} alt="" />
           </div>
@@ -90,8 +128,10 @@ function App() {
             <p className='text-gray-500 text-[12px] text-center mt-4 md:text-md lg:text-lg md:mt-6 w-[70%] mx-auto'>Our membership management software provides full automation of membership renewals and</p>
         </div>
       </div>
+
       <hr className='h-1 mb-0 mt-10 md:mt-32 bg-green-200 w-2/6 mx-auto'/>
-      <div className='slider flex md:w-[100%] md:px-[5%] mt-10 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20'>
+
+      <div className='slider sections flex md:w-[100%] md:px-[5%] mt-10 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20' ref={addToRefs}>
         <div className='md:w-[40%] md:h-full md:flex hidden'>
           <img className='w-full h-full' src={img11} alt="" />
         </div>
@@ -101,7 +141,8 @@ function App() {
           <button className="unseen-btn bg-green-500 md:mt-12 mt-8 px-4 py-2 font-medium rounded hover:bg-green-300 hover:text-green-900 text-white transition-all duration-200 ease-in text-lg md:text-xl">Learn More</button>
         </div>
       </div>
-      <div className='block py-16 md:py-28 bg-green-50 md:flex'>
+
+      <div className='block sections py-16 md:py-28 bg-green-50 md:flex' ref={addToRefs}>
         <div className='md:w-[40%] md:text-left md:ml-[5%] mx-auto text-center items-center'>
           <h1 className='text-[25px] w-[90%] mx-auto md:w-full md:mx-0 md:text-4xl lg:text-5xl font-semibold'>Helping a local<br /><span className='text-green-500'>business reinvent itself</span></h1>
           <p className='w-[80%] mx-auto md:w-full md:mx-0 md:mt-10 mt-6 text-gray-400 text-lg md:text-xl'>We reached here with our hard work and dedication</p>
@@ -145,7 +186,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className='slider2 flex md:w-[100%] md:px-[5%] mt-10 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20'>
+
+      <div className='slider2 sections flex md:w-[100%] md:px-[5%] mt-10 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20'ref={addToRefs}>
         <div className='md:w-[40%] md:h-full md:flex hidden'>
           <img className='w-full h-full' src={img16} alt="" />
         </div>
@@ -155,8 +197,10 @@ function App() {
           <button className="bg-green-500 md:mt-12 mt-8 px-4 py-2 font-medium rounded hover:bg-green-300 hover:text-green-900 text-white transition-all duration-200 ease-in text-sm md:text-base lg:text-lg">Learn More</button>
         </div>
       </div>
+
       <hr className='h-1 mb-0 mt-10 md:mt-32 bg-green-200 w-2/6 mx-auto'/>
-      <div className='slider3 flex md:w-[100%] md:px-[5%] mt-10 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20'>
+
+      <div className='slider3 sections flex md:w-[100%] md:px-[5%] mt-10 items-center h-[70vh] md:h-[80vh] md:py-24 lg:py-10 z-20'ref={addToRefs}>
         <div className='md:w-[40%] md:h-full md:flex hidden'>
           <img className='w-full h-full' src={img17} alt="" />
         </div>
@@ -175,7 +219,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className='mx-auto text-center mt-14 text-xl w-5/6 md:w-[50%] md:text-4xl lg:text-5xl font-semibold md:mt-32 pb-16 md:pb-20'>
+
+      <div className='sections mx-auto text-center mt-14 text-xl w-5/6 md:w-[50%] md:text-4xl lg:text-5xl font-semibold md:mt-32 pb-16 md:pb-20'ref={addToRefs}>
         <h1>Pellentesque suscipit fringilla libero eu.</h1>
         <button className="bg-green-500 md:mt-12 mt-8 px-4 py-2 font-medium rounded hover:bg-green-300 hover:text-green-900 text-white transition-all duration-200 ease-in text-sm md:text-base lg:text-lg">Learn More</button>
       </div>
